@@ -42,6 +42,14 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+  let largest = 0;
+  for (let i = 0; i < integers.length; i++) {
+    if (integers[i].integer > largest) {
+      largest = integers[i].integer;
+    }
+  }
+
+  return largest;
 }
 
 class Counter {
@@ -51,6 +59,8 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.initialNumber = initialNumber;
+    this.firstCall = true;
   }
 
   /**
@@ -67,6 +77,14 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if (this.firstCall) {
+      this.firstCall = false;
+      return this.initialNumber;
+    } else if (this.initialNumber === 0) {
+      return this.initialNumber;
+    } else {
+      return (this.initialNumber -= 1);
+    }
   }
 }
 
