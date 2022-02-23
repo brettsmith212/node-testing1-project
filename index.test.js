@@ -62,18 +62,51 @@ describe("[Exercise 4] Counter", () => {
   });
 });
 
-// describe('[Exercise 5] Seasons', () => {
-//   let seasons
-//   beforeEach(() => {
-//     seasons = new utils.Seasons() // each test must start with fresh seasons
-//   })
-//   // test('[9] the FIRST call of seasons.next returns "summer"', () => {})
-//   // test('[10] the SECOND call of seasons.next returns "fall"', () => {})
-//   // test('[11] the THIRD call of seasons.next returns "winter"', () => {})
-//   // test('[12] the FOURTH call of seasons.next returns "spring"', () => {})
-//   // test('[13] the FIFTH call of seasons.next returns again "summer"', () => {})
-//   // test('[14] the 40th call of seasons.next returns "spring"', () => {})
-// })
+describe("[Exercise 5] Seasons", () => {
+  let seasons;
+  beforeEach(() => {
+    seasons = new utils.Seasons(); // each test must start with fresh seasons
+  });
+  test('[9] the FIRST call of seasons.next returns "summer"', () => {
+    const output = seasons.next();
+    expect(output).toBe("summer");
+  });
+  test('[10] the SECOND call of seasons.next returns "fall"', () => {
+    seasons.next();
+    const output = seasons.next();
+    expect(output).toBe("fall");
+  });
+  test('[11] the THIRD call of seasons.next returns "winter"', () => {
+    seasons.next();
+    seasons.next();
+    const output = seasons.next();
+    expect(output).toBe("winter");
+  });
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    const output = seasons.next();
+    expect(output).toBe("spring");
+  });
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    const output = seasons.next();
+    expect(output).toBe("summer");
+  });
+  test('[14] the 40th call of seasons.next returns "spring"', () => {
+    let i = 1;
+    while (i < 40) {
+      seasons.next();
+      i++;
+    }
+    let output = seasons.next();
+    expect(output).toBe("spring");
+  });
+});
 
 // describe('[Exercise 6] Car', () => {
 //   let focus
